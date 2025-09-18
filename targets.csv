@@ -1,0 +1,4 @@
+url,site_name,priority,notes
+https://gomez.co.jp,Example Site,high,Sample website for testing
+https://www.bbsec.co.jp/index.html,HTTP Test Site,medium,HTTP functionality testing
+https://www.maxell.co.jp/ir/,SSL/TLS Test Site,high,Security testing dedicated site

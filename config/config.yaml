@@ -1,0 +1,51 @@
+# Webセキュリティ診断自動化システム 設定ファイル
+
+audit:
+  # 並行処理数
+  parallel_workers: 5
+
+  # タイムアウト時間（秒）
+  timeout_seconds: 30
+
+  # リトライ回数
+  retry_count: 3
+
+  # 有効な診断項目
+  enabled_auditors:
+    - component_vulnerability
+    - encryption_check
+    - tls_security
+    - access_control
+    - security_headers
+
+# 外部API設定
+external_apis:
+  domsignal:
+    base_url: "https://domsignal.com"
+    rate_limit: 10  # requests per minute
+
+  google_search:
+    api_key: "${GOOGLE_API_KEY}"
+    search_engine_id: "${GOOGLE_SEARCH_ENGINE_ID}"
+
+  security_trails:
+    api_key: "${SECURITY_TRAILS_API_KEY}"
+
+# 出力設定
+output:
+  formats: ["json", "html", "csv"]
+  template_dir: "templates"
+  include_details: true
+
+# ログ設定
+logging:
+  level: "INFO"
+  file: "logs/audit.log"
+  max_size_mb: 100
+  backup_count: 5
+
+# キャッシュ設定
+cache:
+  enabled: true
+  ttl_hours: 24
+  redis_url: null  # ローカルキャッシュを使用
